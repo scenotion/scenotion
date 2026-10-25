@@ -1,0 +1,6 @@
+node_modules/
+dist/
+output/
+reviews/*.m4v
+*.local
+.DS_Store

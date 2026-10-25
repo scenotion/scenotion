@@ -1,0 +1,25 @@
+export const theme = {
+  background: "#171917",
+  surface: "#0B0C0B",
+  surfaceRaised: "#1E211E",
+  border: "rgba(255, 255, 255, 0.10)",
+  text: "#F5F5F5",
+  muted: "#8B918A",
+  faint: "rgba(245, 245, 245, 0.10)",
+  accent: "#00C853",
+  warn: "#FF6B5E",
+  error: "#FF4D4F",
+  json: "#6EA8FE",
+  yaml: "#E6B450",
+  xliff: "#B48EAD",
+  po: "#9AA0A6",
+  font: {
+    sans: '"Noto Sans SC", "Microsoft YaHei", "PingFang SC", Inter, sans-serif',
+    mono: '"JetBrains Mono", "Cascadia Code", Consolas, monospace',
+  },
+  layout: {
+    width: 1920,
+    height: 1080,
+    safe: 96,
+  },
+} as const;
