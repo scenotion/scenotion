@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { Pane, Science, Select, Tab } from "@motion-canvas/ui";
+import { Pane, Science, Select, Tab, Tune } from "@motion-canvas/ui";
 import {
   getEditorLocale,
   getVideoLocale,
@@ -8,6 +8,7 @@ import {
   type EditorLocale,
   type VideoLocale,
 } from "./i18n";
+import { NarrationPane } from "./narration/panel";
 
 const create = h as any;
 
@@ -98,6 +99,14 @@ function ScenotionTab({ tab }: { tab: string }) {
   );
 }
 
+function NarrationTab({ tab }: { tab: string }) {
+  return create(
+    Tab,
+    { title: "Narration", id: "narration-tab", tab },
+    create(Tune, null),
+  );
+}
+
 export function createScenotionPlugin() {
   return {
     name: "@scenotion/editor",
@@ -106,6 +115,11 @@ export function createScenotionPlugin() {
         name: "scenotion",
         tabComponent: ScenotionTab,
         paneComponent: ScenotionPane,
+      },
+      {
+        name: "narration",
+        tabComponent: NarrationTab,
+        paneComponent: NarrationPane,
       },
     ],
   };

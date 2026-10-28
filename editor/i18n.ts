@@ -75,6 +75,7 @@ const uiZh: Record<string, string> = {
   "Settings": "设置",
   "Timeline": "时间轴",
   "Docs": "文档",
+  "Narration": "旁白",
   "Experimental features enabled": "已启用实验性功能",
   "Render": "渲染",
   "Present": "演示",

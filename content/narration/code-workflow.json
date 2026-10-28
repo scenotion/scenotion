@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "project": "code-workflow",
+  "lines": [
+    {
+      "id": "opening",
+      "scene": "CodeWorkflow",
+      "start": 0.2,
+      "end": 2.2,
+      "text": {
+        "en-US": "Code is a timeline. This scene shows how a small edit changes the story.",
+        "zh-CN": "代码就是时间轴。这个场景展示一个小改动如何改变叙述。"
+      }
+    },
+    {
+      "id": "transition",
+      "scene": "CodeWorkflow",
+      "start": 2.4,
+      "end": 4.0,
+      "text": {
+        "en-US": "The resolver now trims the target and falls back to the source.",
+        "zh-CN": "resolver 现在会 trim 目标，并在缺失时回退到 source。"
+      }
+    },
+    {
+      "id": "annotation",
+      "scene": "CodeWorkflow",
+      "start": 4.1,
+      "end": 5.2,
+      "text": {
+        "en-US": "The callout stays anchored to the edited lines.",
+        "zh-CN": "callout 始终锚定在编辑后的代码行。"
+      }
+    }
+  ]
+}

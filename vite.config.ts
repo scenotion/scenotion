@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import motionCanvasModule from "@motion-canvas/vite-plugin";
 import ffmpegModule from "@motion-canvas/ffmpeg";
+import { narrationPlugin } from "./server/narration";
 
 type Interop<T> = T | { default: T };
 
@@ -29,6 +30,7 @@ export default defineConfig({
       ],
     }),
     ffmpeg(),
+    narrationPlugin(),
   ],
   server: {
     watch: {

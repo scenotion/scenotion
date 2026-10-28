@@ -24,12 +24,13 @@ Implemented:
 - Transition presets for code, files and annotations.
 - 4K60 metadata and FFmpeg MP4 export.
 - en-US/zh-CN scene catalogs, AutoText fitting and a Chinese editor UI.
+- Narration MVP: line-based recording, takes, waveform, trim/offset/gain/fade metadata and local storage.
 - Vitest unit tests and a CI workflow.
 
 Not implemented:
 
 - Per-locale rendering, multi-track output and narration-driven locale timelines.
-- Audio, voiceover synchronization, captions and subtitle export.
+- Video-synced recording preview, captions, subtitle export and audio mixing.
 - 3D, model loading, SDF shaders and simulation.
 - Math/paper layout components, data-driven diagrams and algorithm traces.
 - Batch/headless rendering, parameterized variants and codecs.
@@ -129,6 +130,7 @@ docs/          design notes
 - [Parity](./docs/parity.md)
 - [Assets and fonts](./docs/assets.md)
 - [Localization](./docs/i18n.md)
+- [Narration](./docs/narration.md)
 - [Transition presets](./docs/transitions.md)
 - [Third-party notices](./THIRD_PARTY_NOTICES.md)
 
