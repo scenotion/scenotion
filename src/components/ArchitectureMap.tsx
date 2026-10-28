@@ -1,19 +1,39 @@
 import { Layout, Line, Rect, Txt } from "@motion-canvas/2d";
+import { t, type MessageKey } from "../i18n";
 import { theme } from "../theme";
 
 type NodeSpec = {
   x: number;
   y: number;
   width: number;
-  title: string;
-  detail: string;
+  titleKey: MessageKey;
+  detailKey: MessageKey;
   accent?: boolean;
 };
 
 const nodes: NodeSpec[] = [
-  { x: -380, y: 0, width: 260, title: "Source", detail: "code / data" },
-  { x: 0, y: -90, width: 300, title: "Transform", detail: "rules + context", accent: true },
-  { x: 380, y: 0, width: 260, title: "Render", detail: "frames / video" },
+  {
+    x: -380,
+    y: 0,
+    width: 260,
+    titleKey: "architectureMap.source.title",
+    detailKey: "architectureMap.source.detail",
+  },
+  {
+    x: 0,
+    y: -90,
+    width: 300,
+    titleKey: "architectureMap.transform.title",
+    detailKey: "architectureMap.transform.detail",
+    accent: true,
+  },
+  {
+    x: 380,
+    y: 0,
+    width: 260,
+    titleKey: "architectureMap.render.title",
+    detailKey: "architectureMap.render.detail",
+  },
 ];
 
 export function ArchitectureMap() {
@@ -51,7 +71,7 @@ export function ArchitectureMap() {
 
       {nodes.map((node) => (
         <Rect
-          key={node.title}
+          key={node.titleKey}
           x={node.x}
           y={node.y}
           width={node.width}
@@ -70,14 +90,14 @@ export function ArchitectureMap() {
             gap={8}
           >
             <Txt
-              text={node.title}
+              text={() => t(node.titleKey)}
               fill={node.accent ? theme.accent : theme.text}
               fontFamily={theme.font.sans}
               fontSize={25}
               fontWeight={700}
             />
             <Txt
-              text={node.detail}
+              text={() => t(node.detailKey)}
               fill={theme.muted}
               fontFamily={theme.font.mono}
               fontSize={16}
@@ -87,7 +107,7 @@ export function ArchitectureMap() {
       ))}
 
       <Txt
-        text="abstract pipeline / one possible decomposition"
+        text={() => t("architectureMap.caption")}
         x={0}
         y={150}
         fill={theme.muted}

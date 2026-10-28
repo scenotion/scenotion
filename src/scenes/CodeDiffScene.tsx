@@ -1,6 +1,7 @@
 import { lines, makeScene2D } from "@motion-canvas/2d";
 import { waitFor } from "@motion-canvas/core";
 import { CodeDiff } from "../code";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 const before = `type User = {
@@ -26,11 +27,11 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <SceneFrame
-      index="01 / CODE"
-      label="CODE DIFF"
-      title="Show the change."
-      subtitle="Two synchronized code panes. The changed line is selected, while the rest of the code stays visible for comparison."
-      footer="scenotion / code-diff"
+      index={() => t("codeDiff.index")}
+      label={() => t("codeDiff.label")}
+      title={() => t("codeDiff.title")}
+      subtitle={() => t("codeDiff.subtitle")}
+      footer={() => t("codeDiff.footer")}
     >
       <CodeDiff
         before={before}

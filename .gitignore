@@ -2,5 +2,15 @@ node_modules/
 dist/
 output/
 reviews/*.m4v
+reviews/*.mp4
+
+# Local/private media and generated assets
+voiceover/
+assets/private/
+assets/local/
+public/generated/
+public/fonts/
+.cache/
+
 *.local
 .DS_Store

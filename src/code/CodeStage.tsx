@@ -12,6 +12,7 @@ import {
 import { Code, Layout, Node, Rect, Txt } from "@motion-canvas/2d";
 import { parseCodeSelection } from "@motion-canvas/2d";
 import type { CodeRange, CodeSelection } from "@motion-canvas/2d";
+import { t } from "../i18n";
 import { theme } from "../theme";
 import { ClipViewport } from "./ClipViewport";
 import { LineClipViewport, RangeClipViewport } from "./LineClipViewport";
@@ -131,6 +132,8 @@ function computeNextKept(plans: LinePlan[]): number[] {
   });
 }
 
+let nextCodeStageId = 0;
+
 export function CodeStage({
   code,
   files,
@@ -145,7 +148,7 @@ export function CodeStage({
   focus,
   codeRef,
   showLineNumbers = true,
-  status = "SOURCE",
+  status = t("status.source"),
   x = 0,
   y = 0,
   lineStates,
@@ -157,6 +160,7 @@ export function CodeStage({
   filePreset,
   annotations,
 }: CodeStageProps) {
+  const instanceId = nextCodeStageId++;
   const resolvedFilePreset = resolveFileTransitionPreset(filePreset);
   const fileList = files ?? [];
   const filesMode = fileList.length > 0;
@@ -506,7 +510,7 @@ export function CodeStage({
 
   const slotViews = Array.from({ length: slotCount }, (_, index) => (
     <Node
-      key={"transition-slot-" + index}
+      key={"transition-slot-" + instanceId + "-" + index}
       ref={slotNodes}
       y={0}
       opacity={slotOpacity(index)}
@@ -559,7 +563,7 @@ export function CodeStage({
               if (state === "same") return null;
               return (
                 <Rect
-                  key={"line-state-" + x + "-" + index}
+                  key={"line-state-" + instanceId + "-" + x + "-" + index}
                   x={0}
                   y={contentTop + index * lineHeightPx + lineHeightPx / 2}
                   width={markerWidth}
@@ -576,7 +580,7 @@ export function CodeStage({
             {showLineNumbers &&
               Array.from({ length: 64 }, (_, index) => (
                 <Txt
-                  key={"gutter-" + x + "-" + index}
+                  key={"gutter-" + instanceId + "-" + x + "-" + index}
                   text={() => {
                     const total = currentCode().split("\n").length;
                     if (index >= total) return "";
@@ -655,7 +659,7 @@ export function CodeStage({
 
           {fileList.map((file, index) => (
             <Txt
-              key={"tab-" + file.name}
+              key={"tab-" + instanceId + "-" + file.name}
               ref={tabLabels}
               text={file.name}
               x={tabCenters[index]}
@@ -753,7 +757,7 @@ export function CodeStage({
                 {showLineNumbers &&
                   Array.from({ length: 64 }, (_, index) => (
                     <Txt
-                      key={"next-gutter-" + index}
+                      key={"next-gutter-" + instanceId + "-" + index}
                       text={() => {
                         if (index >= nextFileLineCount()) return "";
                         return String(index + 1).padStart(2, "0");

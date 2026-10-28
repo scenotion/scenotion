@@ -6,6 +6,7 @@ import {
   createCodeAnnotations,
   createCodeTransition,
 } from "../code";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 const before = `function apply(entry: Entry) {
@@ -33,11 +34,11 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <SceneFrame
-      index="04 / CODE"
-      label="ANNOTATIONS"
-      title="Annotations follow the code."
-      subtitle="Callout, error underline, bracket pair and line note all re-anchor after the edit."
-      footer="scenotion / code-annotations"
+      index={() => t("codeAnnotations.index")}
+      label={() => t("codeAnnotations.label")}
+      title={() => t("codeAnnotations.title")}
+      subtitle={() => t("codeAnnotations.subtitle")}
+      footer={() => t("codeAnnotations.footer")}
     >
       <CodeStage
         codeRef={code}
@@ -47,7 +48,7 @@ export default makeScene2D(function* (view) {
         annotations={annotations}
         filename="apply.ts"
         language="ts"
-        status="EDITED"
+        status={t("status.edited")}
         height={430}
         lineCountHint={8}
       />
@@ -60,7 +61,7 @@ export default makeScene2D(function* (view) {
     id: "fallback",
     kind: "callout",
     range: lines(2, 2),
-    label: "fallback path",
+    label: t("codeAnnotations.fallback"),
     tone: "accent",
   });
 
@@ -83,7 +84,7 @@ export default makeScene2D(function* (view) {
     id: "target",
     kind: "line",
     range: lines(4, 4),
-    label: "target branch",
+    label: t("codeAnnotations.target"),
     tone: "warn",
   });
 

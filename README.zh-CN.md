@@ -6,7 +6,7 @@
   <strong>简体中文</strong>
 </p>
 
-Scenotion 是构建在 Motion Canvas 之上的技术视频组件层，用于代码讲解、diff、注释、图表、算法追踪和公式；基础 3D 在计划中。
+Scenotion 是构建在 Motion Canvas 之上的技术视频组件层，用于代码讲解、diff、注释、图表、算法追踪和公式；基础 3D 暂缓。
 
 Scenotion 是独立项目，与 Motion Canvas 无隶属关系。
 
@@ -23,15 +23,17 @@ Scenotion 是独立项目，与 Motion Canvas 无隶属关系。
 - callout、下划线、括号、行注释，并跟随行计划。
 - 代码、文件、注释切换预设。
 - 4K60 元数据和 FFmpeg MP4 导出。
+- en-US/zh-CN 场景 catalog、AutoText 自适应和中文编辑器 UI。
+- Vitest 单元测试和 CI workflow。
 
 未实现：
 
-- 本地化 catalog、locale 变体和按语言渲染。
+- 按语言渲染、多音轨输出和旁白驱动的 locale 时间轴。
 - 音频、旁白同步、字幕渲染与导出。
 - 3D、模型加载、SDF shader 和模拟。
 - 数学/论文版式、数据驱动图表和算法追踪。
 - 批量/无头渲染、参数化变体和编码格式。
-- 自动化测试和 CI。
+- 视觉回归和端到端渲染测试。
 
 CLIFF、架构、算法项目是静态视觉演示；CLIFF 项目不解析 CLIFF。
 
@@ -43,15 +45,18 @@ npm run serve
 ~~~
 
 Vite 会输出编辑器地址。所有项目都注册在 `vite.config.ts`。
+在项目 URL 后加 `?locale=zh-CN` 可预览中文视频语言。
+加 `?ui=zh-CN` 可切换编辑器界面语言，或使用 Scenotion 侧栏标签。
 
 | 脚本 | 用途 |
 | --- | --- |
 | `npm run serve` | Motion Canvas 编辑器和预览 |
 | `npm run check` | TypeScript 检查 |
+| `npm test` | Vitest 单元测试 |
 | `npm run build` | 类型检查后构建生产包 |
 | `npm run review` | 从 MP4 导出 720p 审查片 |
 
-目前没有 `npm test`。
+单元测试使用 Vitest；视觉回归和端到端渲染测试尚未实现。
 
 ## 项目
 
@@ -113,11 +118,17 @@ src/
   scenes/      场景实现
   projects/    项目入口与 .meta 配置
   theme/       tokens 与 SceneFrame
+editor/        Scenotion 编辑器包装与 UI 本地化
+tests/         Vitest 单元测试
 docs/          设计说明
 ~~~
 
 ## 文档
 
+- [需求](./docs/requirements.md)
+- [对标](./docs/parity.md)
+- [资产与字体](./docs/assets.md)
+- [本地化](./docs/i18n.md)
 - [切换预设](./docs/transitions.md)
 - [第三方声明](./THIRD_PARTY_NOTICES.md)
 

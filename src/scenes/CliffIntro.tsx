@@ -1,17 +1,18 @@
 import { makeScene2D } from "@motion-canvas/2d";
 import { waitFor } from "@motion-canvas/core";
 import { CodePanel } from "../components/CodePanel";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 export default makeScene2D(function* (view) {
   view.fill(theme.background);
   view.add(
     <SceneFrame
-      index="01 / 03"
-      label="CLIFF FORMAT"
-      title="Code, with context."
-      subtitle="A line-oriented format for localization work, built for humans and LLMs."
-      footer="scenotion / cliff-format"
+      index={() => t("cliff.index")}
+      label={() => t("cliff.label")}
+      title={() => t("cliff.title")}
+      subtitle={() => t("cliff.subtitle")}
+      footer={() => t("cliff.footer")}
     >
       <CodePanel
         filename="settings.cliff"

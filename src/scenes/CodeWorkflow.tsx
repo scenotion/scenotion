@@ -7,6 +7,7 @@ import {
   createCodeAnnotation,
   createCodeTransition,
 } from "../code";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 const before = `type Entry = {
@@ -39,11 +40,11 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <SceneFrame
-      index="00 / CODE"
-      label="CODE WORKFLOW"
-      title="Code is a timeline."
-      subtitle="A generic code scene: syntax highlighting, line numbers, selection, a code transition and a code-bound callout."
-      footer="scenotion / code-workflow"
+      index={() => t("codeWorkflow.index")}
+      label={() => t("codeWorkflow.label")}
+      title={() => t("codeWorkflow.title")}
+      subtitle={() => t("codeWorkflow.subtitle")}
+      footer={() => t("codeWorkflow.footer")}
     >
       <CodeStage
         codeRef={code}
@@ -65,7 +66,7 @@ export default makeScene2D(function* (view) {
 
   const annotation = createCodeAnnotation(code(), {
     range: lines(7, 8),
-    label: "trim + fallback",
+    label: t("codeWorkflow.annotation"),
     tone: "accent",
     kind: "callout",
     motion: annotationMotions.pop,

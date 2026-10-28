@@ -15,7 +15,9 @@ Scenotion source is MIT. Direct dependencies:
 | `@lezer/json` | 1.0.3 | MIT |
 | `@lezer/python` | 1.1.19 | MIT |
 | `diff` | 9.0.0 | BSD-3-Clause |
+| `preact` | 10.29.8 | MIT |
 | `vite` | 5.4.21 | MIT |
+| `vitest` | 2.1.9 | MIT |
 | `typescript` | 5.9.3 | Apache-2.0 |
 | `cross-env` | 10.1.0 | MIT |
 

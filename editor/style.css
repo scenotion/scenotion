@@ -1,0 +1,5 @@
+@import "@motion-canvas/ui/dist/style.css";
+
+.scenotion-pane {
+  padding: 12px;
+}

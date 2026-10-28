@@ -1,6 +1,7 @@
 import { makeScene2D } from "@motion-canvas/2d";
 import { createSignal, waitFor } from "@motion-canvas/core";
 import { CodeStage } from "../code";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 const longCode = Array.from({ length: 24 }, (_, index) => {
@@ -24,11 +25,11 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <SceneFrame
-      index="02 / CODE"
-      label="CODE VIEWPORT"
-      title="Scroll the window."
-      subtitle="A long code file stays inside a fixed viewport. Only the visible lines are rendered, while the gutter keeps the original line numbers."
-      footer="scenotion / code-scroll"
+      index={() => t("codeScroll.index")}
+      label={() => t("codeScroll.label")}
+      title={() => t("codeScroll.title")}
+      subtitle={() => t("codeScroll.subtitle")}
+      footer={() => t("codeScroll.footer")}
     >
       <CodeStage
         code={longCode}

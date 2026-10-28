@@ -6,7 +6,7 @@
   <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
-Scenotion is a Motion Canvas component layer for technical videos. It renders code walkthroughs, diffs, annotations, diagrams, algorithm traces and equations; basic 3D is planned.
+Scenotion is a Motion Canvas component layer for technical videos. It renders code walkthroughs, diffs, annotations, diagrams, algorithm traces and equations; basic 3D is deferred.
 
 Scenotion is independent and not affiliated with Motion Canvas.
 
@@ -23,15 +23,17 @@ Implemented:
 - Callout, underline, bracket and line annotations that follow line plans.
 - Transition presets for code, files and annotations.
 - 4K60 metadata and FFmpeg MP4 export.
+- en-US/zh-CN scene catalogs, AutoText fitting and a Chinese editor UI.
+- Vitest unit tests and a CI workflow.
 
 Not implemented:
 
-- Localization catalog, locale variants and per-locale rendering.
+- Per-locale rendering, multi-track output and narration-driven locale timelines.
 - Audio, voiceover synchronization, captions and subtitle export.
 - 3D, model loading, SDF shaders and simulation.
 - Math/paper layout components, data-driven diagrams and algorithm traces.
 - Batch/headless rendering, parameterized variants and codecs.
-- Automated tests and CI.
+- Visual regression and end-to-end rendering tests.
 
 The CLIFF, architecture and algorithm projects are static visual demos. The CLIFF project does not parse CLIFF.
 
@@ -43,15 +45,18 @@ npm run serve
 ~~~
 
 Vite prints the editor URL. All projects are registered in `vite.config.ts`.
+Append `?locale=zh-CN` to a project URL to preview the Chinese video locale.
+Append `?ui=zh-CN` to switch the editor UI language, or use the Scenotion sidebar tab.
 
 | Script | Purpose |
 | --- | --- |
 | `npm run serve` | Motion Canvas editor and preview |
 | `npm run check` | TypeScript check |
+| `npm test` | Vitest unit tests |
 | `npm run build` | Type check, then production build |
 | `npm run review` | 720p review export from an MP4 |
 
-There is no `npm test` yet.
+Unit tests use Vitest. Visual and end-to-end rendering tests are not implemented yet.
 
 ## Projects
 
@@ -113,11 +118,17 @@ src/
   scenes/      scene implementations
   projects/    project entries and .meta settings
   theme/       tokens and SceneFrame
+editor/        Scenotion editor wrapper and UI localization
+tests/         Vitest unit tests
 docs/          design notes
 ~~~
 
 ## Docs
 
+- [Requirements](./docs/requirements.md)
+- [Parity](./docs/parity.md)
+- [Assets and fonts](./docs/assets.md)
+- [Localization](./docs/i18n.md)
 - [Transition presets](./docs/transitions.md)
 - [Third-party notices](./THIRD_PARTY_NOTICES.md)
 

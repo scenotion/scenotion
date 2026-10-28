@@ -1,13 +1,14 @@
 import { makeScene2D } from "@motion-canvas/2d";
 import { waitFor } from "@motion-canvas/core";
 import { CodeStage, createCodeTabsController } from "../code";
+import { t } from "../i18n";
 import { SceneFrame, theme } from "../theme";
 
 const files = [
   {
     name: "types.ts",
     language: "ts" as const,
-    status: "SOURCE",
+    status: t("status.source"),
     code: `export type Entry = {
   id: string;
   source: string;
@@ -17,7 +18,7 @@ const files = [
   {
     name: "resolver.ts",
     language: "ts" as const,
-    status: "EDITED",
+    status: t("status.edited"),
     code: `import type { Entry } from "./types";
 
 export function resolve(entry: Entry) {
@@ -28,7 +29,7 @@ export function resolve(entry: Entry) {
   {
     name: "usage.ts",
     language: "ts" as const,
-    status: "SOURCE",
+    status: t("status.source"),
     code: `import { resolve } from "./resolver";
 
 const label = resolve({
@@ -46,11 +47,11 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <SceneFrame
-      index="03 / CODE"
-      label="FILE TABS"
-      title="Files are a timeline."
-      subtitle="Switch files without losing continuity. Tabs lead with their own spring; code wipes on a separate track."
-      footer="scenotion / code-tabs"
+      index={() => t("codeTabs.index")}
+      label={() => t("codeTabs.label")}
+      title={() => t("codeTabs.title")}
+      subtitle={() => t("codeTabs.subtitle")}
+      footer={() => t("codeTabs.footer")}
     >
       <CodeStage
         files={files}

@@ -14,6 +14,7 @@ const ffmpeg = interop(ffmpegModule);
 export default defineConfig({
   plugins: [
     motionCanvas({
+      editor: "@scenotion/editor",
       project: [
         "./src/projects/code-workflow.ts",
         "./src/projects/code-diff.ts",
@@ -29,4 +30,9 @@ export default defineConfig({
     }),
     ffmpeg(),
   ],
+  server: {
+    watch: {
+      ignored: ["**/*.tmpdir/**", "**/.*.tmpdir/**", "**/*.tmp"],
+    },
+  },
 });

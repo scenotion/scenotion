@@ -1,4 +1,5 @@
 import { Layout, Rect, Txt } from "@motion-canvas/2d";
+import { t } from "../i18n";
 import { theme } from "../theme";
 
 const values = [42, 78, 35, 96, 58, 71, 24, 88];
@@ -23,14 +24,14 @@ export function AlgorithmBars() {
       >
         <Layout layout direction="row" justifyContent="space-between" alignItems="center">
           <Txt
-            text="array / active index"
+            text={() => t("algorithmBars.header")}
             fill={theme.muted}
             fontFamily={theme.font.mono}
             fontSize={16}
             letterSpacing={1}
           />
           <Txt
-            text="O(n log n)"
+            text={() => t("algorithmBars.complexity")}
             fill={theme.accent}
             fontFamily={theme.font.mono}
             fontSize={18}
@@ -71,7 +72,7 @@ export function AlgorithmBars() {
         </Layout>
 
         <Txt
-          text="visualization layer / deterministic trace goes here"
+          text={() => t("algorithmBars.footer")}
           fill={theme.muted}
           fontFamily={theme.font.mono}
           fontSize={15}

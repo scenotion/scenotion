@@ -4,6 +4,7 @@ import { CodeStage } from "./CodeStage";
 import { diffCode } from "./diff";
 import type { CodeLanguage } from "./highlight";
 import type { LineState } from "./diff";
+import { t } from "../i18n";
 
 type CodeDiffProps = {
   before: string;
@@ -57,7 +58,7 @@ export function CodeDiff({
         lineHeight={1.55}
         focus={beforeFocus ?? focusFor(diff.changedBefore)}
         lineStates={states(diff.before)}
-        status="BEFORE"
+        status={t("status.before")}
       />
       <CodeStage
         x={offset}
@@ -70,7 +71,7 @@ export function CodeDiff({
         lineHeight={1.55}
         focus={afterFocus ?? focusFor(diff.changedAfter)}
         lineStates={states(diff.after)}
-        status="AFTER"
+        status={t("status.after")}
       />
     </Rect>
   );

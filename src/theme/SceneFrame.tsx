@@ -1,15 +1,23 @@
 import { Layout, Rect, Txt } from "@motion-canvas/2d";
 import type { Node } from "@motion-canvas/2d";
+import type { SignalValue } from "@motion-canvas/core";
+import { t } from "../i18n";
+import { AutoText } from "../i18n/AutoText";
 import { theme } from "./tokens";
 
 type SceneFrameProps = {
-  index: string;
-  label: string;
-  title: string;
-  subtitle: string;
-  footer: string;
+  index: SignalValue<string>;
+  label: SignalValue<string>;
+  title: SignalValue<string>;
+  subtitle: SignalValue<string>;
+  footer: SignalValue<string>;
+  meta?: SignalValue<string>;
   children?: Node | Node[];
 };
+
+function readText(value: SignalValue<string>): string {
+  return typeof value === "function" ? value() : value;
+}
 
 export function SceneFrame({
   index,
@@ -17,6 +25,7 @@ export function SceneFrame({
   title,
   subtitle,
   footer,
+  meta = () => t("frame.meta"),
   children,
 }: SceneFrameProps) {
   return (
@@ -44,7 +53,7 @@ export function SceneFrame({
               letterSpacing={3}
             />
             <Txt
-              text={"/ " + label}
+              text={() => "/ " + readText(label)}
               fill={theme.muted}
               fontFamily={theme.font.mono}
               fontSize={16}
@@ -61,22 +70,29 @@ export function SceneFrame({
         </Layout>
 
         <Layout layout direction="column" gap={22} alignItems="start">
-          <Txt
+          <AutoText
+            keyPrefix="scene-title"
             text={title}
-            fill={theme.text}
-            fontFamily={theme.font.sans}
+            width={theme.layout.width - theme.layout.safe * 2}
+            maxLines={2}
             fontSize={112}
-            fontWeight={800}
+            minFontSize={64}
             lineHeight={1.08}
-            height={132}
-            letterSpacing={-4}
-          />
-          <Txt
-            text={subtitle}
-            fill={theme.muted}
             fontFamily={theme.font.sans}
+            fontWeight={800}
+            letterSpacing={-4}
+            fill={theme.text}
+          />
+          <AutoText
+            keyPrefix="scene-subtitle"
+            text={subtitle}
+            width={theme.layout.width - theme.layout.safe * 2}
+            maxLines={3}
             fontSize={30}
+            minFontSize={20}
             lineHeight={1.45}
+            fontFamily={theme.font.sans}
+            fill={theme.muted}
           />
         </Layout>
 
@@ -93,7 +109,7 @@ export function SceneFrame({
             letterSpacing={1}
           />
           <Txt
-            text="MOTION CANVAS / 4K60 READY"
+            text={meta}
             fill={theme.muted}
             fontFamily={theme.font.mono}
             fontSize={16}

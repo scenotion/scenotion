@@ -139,9 +139,13 @@ function alignLines(before: string[], after: string[]): AlignmentStep[] {
  * alignment below scores token and bigram similarity inside each gap, so lines
  * keep their identity when possible and structural rows become inserts/removes.
  */
+function splitCodeLines(code: string): string[] {
+  return code === "" ? [] : code.split("\n");
+}
+
 export function buildLinePlans(before: string, after: string): LinePlan[] {
-  const beforeLines = before.split("\n");
-  const afterLines = after.split("\n");
+  const beforeLines = splitCodeLines(before);
+  const afterLines = splitCodeLines(after);
   const alignment = alignLines(beforeLines, afterLines);
 
   return alignment.map((step, id) => {

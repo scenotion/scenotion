@@ -5,6 +5,7 @@ import {
   createCodeTabsController,
   createCodeTransition,
 } from "../code";
+import { t } from "../i18n";
 import { theme } from "../theme";
 
 const before = `const n = 0;
@@ -21,13 +22,13 @@ if (!ready) {
 return n;`;
 
 const wipeFiles = [
-  { name: "wipe", code: before, language: "ts" as const, status: "SOURCE" },
-  { name: "next", code: after, language: "ts" as const, status: "SOURCE" },
+  { name: "wipe", code: before, language: "ts" as const, status: t("status.source") },
+  { name: "next", code: after, language: "ts" as const, status: t("status.source") },
 ];
 
 const quickFiles = [
-  { name: "quick", code: before, language: "ts" as const, status: "SOURCE" },
-  { name: "next", code: after, language: "ts" as const, status: "SOURCE" },
+  { name: "quick", code: before, language: "ts" as const, status: t("status.source") },
+  { name: "next", code: after, language: "ts" as const, status: t("status.source") },
 ];
 
 export default makeScene2D(function* (view) {
@@ -66,7 +67,7 @@ export default makeScene2D(function* (view) {
             letterSpacing={3}
           />
           <Txt
-            text="/ TRANSITION DEBUG"
+            text={() => t("codeTransitionDebug.label")}
             fill={theme.muted}
             fontFamily={theme.font.mono}
             fontSize={16}
@@ -74,7 +75,7 @@ export default makeScene2D(function* (view) {
           />
         </Layout>
         <Txt
-          text="05 / CODE"
+          text={() => t("codeTransitionDebug.index")}
           fill={theme.muted}
           fontFamily={theme.font.mono}
           fontSize={16}
@@ -84,7 +85,7 @@ export default makeScene2D(function* (view) {
 
       <Layout layout direction="column" gap={12} alignItems="start">
         <Txt
-          text="Five transitions, one API."
+          text={() => t("codeTransitionDebug.title")}
           fill={theme.text}
           fontFamily={theme.font.sans}
           fontSize={72}
@@ -94,7 +95,7 @@ export default makeScene2D(function* (view) {
           height={84}
         />
         <Txt
-          text="Fixed validation: snappy, smooth, cinematic, wipe and quick."
+          text={() => t("codeTransitionDebug.subtitle")}
           fill={theme.muted}
           fontFamily={theme.font.sans}
           fontSize={24}
@@ -181,13 +182,13 @@ export default makeScene2D(function* (view) {
         alignItems="center"
       >
         <Txt
-          text="scenotion / code-transition-debug"
+          text={() => t("codeTransitionDebug.footer")}
           fill={theme.muted}
           fontFamily={theme.font.mono}
           fontSize={16}
         />
         <Txt
-          text="MOTION CANVAS / 4K60 READY"
+          text={() => t("frame.meta")}
           fill={theme.muted}
           fontFamily={theme.font.mono}
           fontSize={16}
