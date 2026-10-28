@@ -25,6 +25,7 @@ Implemented:
 - 4K60 metadata and FFmpeg MP4 export.
 - en-US/zh-CN scene catalogs, AutoText fitting and a Chinese editor UI.
 - Narration MVP: line-based recording, takes, waveform, trim/offset/gain/fade metadata and local storage.
+- Targeted `@scenotion/ui` fork with a narration audio lane in the timeline.
 - Vitest unit tests and a CI workflow.
 
 Not implemented:
@@ -131,6 +132,7 @@ docs/          design notes
 - [Assets and fonts](./docs/assets.md)
 - [Localization](./docs/i18n.md)
 - [Narration](./docs/narration.md)
+- [UI fork](./docs/ui-fork.md)
 - [Transition presets](./docs/transitions.md)
 - [Third-party notices](./THIRD_PARTY_NOTICES.md)
 

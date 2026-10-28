@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
-import { Pane, Select, useApplication } from "@motion-canvas/ui";
+import { Pane, Select, useApplication } from "@scenotion/ui";
 import {
   slugify,
   type NarrationLocale,
@@ -42,6 +42,10 @@ function errorMessage(error: unknown): string {
 
 function numberOr(value: number, fallback: number): number {
   return Number.isFinite(value) ? value : fallback;
+}
+
+function notifyNarrationChanged(): void {
+  window.dispatchEvent(new Event("scenotion:narration-changed"));
 }
 
 function NumberField({
@@ -197,6 +201,7 @@ export function NarrationPane({ tab }: { tab: string }) {
           ? "已保存 " + take.duration.toFixed(1) + " 秒。"
           : "Saved " + take.duration.toFixed(1) + "s.",
       );
+      notifyNarrationChanged();
       await load(selectedLine.id);
       setSelectedTakeId(take.id);
     } catch (err) {
@@ -254,6 +259,7 @@ export function NarrationPane({ tab }: { tab: string }) {
         patch,
       });
       setStatus(zh ? "已更新 take 属性。" : "Take properties updated.");
+      notifyNarrationChanged();
       await load(selectedLine.id);
     } catch (err) {
       setError(errorMessage(err));
@@ -275,6 +281,7 @@ export function NarrationPane({ tab }: { tab: string }) {
         patch: { active: true },
       });
       setStatus(zh ? "已设为当前 take。" : "Active take updated.");
+      notifyNarrationChanged();
       await load(selectedLine.id);
     } catch (err) {
       setError(errorMessage(err));
@@ -296,6 +303,7 @@ export function NarrationPane({ tab }: { tab: string }) {
         takeId: selectedTake.id,
       });
       setStatus(zh ? "已删除 take。" : "Take deleted.");
+      notifyNarrationChanged();
       await load(selectedLine.id);
     } catch (err) {
       setError(errorMessage(err));

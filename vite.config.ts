@@ -13,6 +13,14 @@ const motionCanvas = interop(motionCanvasModule);
 const ffmpeg = interop(ffmpegModule);
 
 export default defineConfig({
+  resolve: {
+    alias: [
+      {
+        find: /^@motion-canvas\/ui$/,
+        replacement: "@scenotion/ui",
+      },
+    ],
+  },
   plugins: [
     motionCanvas({
       editor: "@scenotion/editor",

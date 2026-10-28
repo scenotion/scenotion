@@ -1,6 +1,7 @@
 node_modules/
 dist/
 output/
+packages/scenotion-ui/dist/
 reviews/*.m4v
 reviews/*.mp4
 

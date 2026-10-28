@@ -17,8 +17,9 @@ Run the checks and describe manual verification in the pull request.
 
 ## Rules
 
-- Do not patch `node_modules`. The supported extension point is the local `editor/` package.
-- If a Motion Canvas fork becomes necessary, keep the MIT notice, mark modified files and update `THIRD_PARTY_NOTICES.md`.
+- Do not patch `node_modules`. Use `editor/` for the wrapper and `packages/scenotion-ui/` for the sanctioned UI fork.
+- Keep the fork's upstream MIT notice, update `packages/scenotion-ui/NOTICE.md`, and describe modifications in the commit.
+- Prefer editor components and custom nodes when a source fork is not required.
 - Keep one logical change per pull request.
 - Update `README.md` and `README.zh-CN.md` when public behavior, scripts or the project list changes.
 - Update `docs/transitions.md` when a preset or annotation timing changes.

@@ -25,6 +25,7 @@ Scenotion 是独立项目，与 Motion Canvas 无隶属关系。
 - 4K60 元数据和 FFmpeg MP4 导出。
 - en-US/zh-CN 场景 catalog、AutoText 自适应和中文编辑器 UI。
 - 旁白 MVP：逐行录制、take、波形、trim/offset/gain/fade 元数据和本地存储。
+- 定向 fork 的 `@scenotion/ui`，时间轴带旁白音频轨。
 - Vitest 单元测试和 CI workflow。
 
 未实现：
@@ -131,6 +132,7 @@ docs/          设计说明
 - [资产与字体](./docs/assets.md)
 - [本地化](./docs/i18n.md)
 - [旁白](./docs/narration.md)
+- [UI fork](./docs/ui-fork.md)
 - [切换预设](./docs/transitions.md)
 - [第三方声明](./THIRD_PARTY_NOTICES.md)
 

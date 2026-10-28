@@ -44,7 +44,7 @@ cloud collaboration, interactive web code blocks, SDF/fluid/particle simulation,
 | Voiceover | Line-based recording first; continuous/punch-in later. |
 | Audio persistence | Local Vite server writes to ignored voiceover/ directory; static build is preview-only. |
 | Output | Project render profile; default per-locale MP4 + sidecar SRT; optional multi-track master. |
-| UI localization | Non-invasive editor wrapper first; fork only if coverage/stability fails. |
+| UI localization | Targeted UI fork (`packages/scenotion-ui`) owns the editor/timeline; the wrapper keeps the vnode translation and plugin surface. |
 | Fonts | Project assets, not a Scenotion feature. Cloud or local; no bundled/default fonts. |
 | Locales | en-US and zh-CN first. |
 | Test project | Extend the existing feature-validation project at 720p. |
@@ -136,14 +136,15 @@ Voiceover is a core workflow, not an add-on. It must be comfortable, but it is n
 
 | ID | P | Requirement | Acceptance |
 | --- | --- | --- | --- |
-| U-01 | M | Non-invasive editor wrapper | Motion Canvas can be upgraded independently |
+| U-01 | M | Targeted UI fork for editor and timeline; wrapper remains for i18n and plugins | Fork base and patches documented; upgrade is deliberate |
 | U-02 | M | Full UI localization: navigation, settings, playback, timeline, console, project selection, meta labels, exporter labels, tooltips | Chinese coverage at least 95 percent |
 | U-03 | M | Persist language choice; correct html lang; refresh keeps it | Reload keeps Chinese UI |
 | U-04 | M | Scenotion panel: UI language, video language, narration entry, render all, status | Panel usable |
-| U-05 | M | Narration workspace: line list, waveform, preview, record, takes, properties | Reference narration flow works |
+| U-05 | M | Narration timeline: voice lane, waveform clips, playhead sync, record, takes, properties | Reference narration flow works in the timeline |
 | U-06 | S | Render queue, progress and errors | No terminal needed |
 | U-07 | S | Scenotion branding and dark theme; retain Motion Canvas attribution | Workflow unchanged |
-| U-08 | M | If wrapper misses the gate, fork UI under MIT with notices and modification markers | License auditable |
+| U-08 | M | Forked UI keeps MIT notices, fork base and modification markers | License and patches auditable |
+| U-09 | M | Timeline has separate voice and caption lanes; clips can be selected and seek the player | A recorded take appears as a timeline clip |
 
 ### 5.7 Assets and fonts
 
@@ -281,7 +282,7 @@ Extend the existing feature-validation project; do not start a new topic.
 | --- | --- | --- |
 | M0 | Requirements, parity and asset docs; .gitignore; test/CI skeleton; P0 bug fixes | check/test pass; no new media tracked; docs reviewed |
 | M1 | i18n catalog, AutoText, font loading; editor wrapper; Chinese UI; remove hardcoded scene text | UI Chinese at least 95 percent; en/zh no overflow |
-| M2 | Narration workspace: record, takes, waveform, trim/offset/gain/fade, snap, local save, caption link | 30 s line can be recorded, edited, aligned, retaken |
+| M2 | Narration timeline: voice lane, record, takes, waveform, trim/offset/gain/fade, snap, local save, caption link | A 30 s line can be recorded, seen as a timeline clip, edited, aligned and retaken |
 | M3 | Mix, caption export/burn-in, per-locale render, output profile, extended 720p review | One command produces en/zh versions |
 | M4 | CodeStory, focus animation, mark, diff, languages/themes, layouts | Five-step code walkthrough |
 | M5 | Math/paper, diagrams, algorithm traces | Science test reel |

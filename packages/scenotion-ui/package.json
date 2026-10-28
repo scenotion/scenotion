@@ -1,0 +1,28 @@
+{
+  "name": "@scenotion/ui",
+  "version": "0.1.0",
+  "description": "Scenotion editor UI, forked from Motion Canvas UI",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "author": "scenotion",
+  "license": "MIT",
+  "type": "module",
+  "files": ["dist", "LICENSE", "NOTICE.md"],
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "@motion-canvas/core": "3.17.2",
+    "@preact/signals": "^1.2.1",
+    "preact": "^10.19.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.7.0",
+    "clsx": "^2.0.0",
+    "highlight.js": "^11.9.0",
+    "sass": "^1.69.5",
+    "source-map-js": "^1.0.2",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^3.6.4"
+  }
+}

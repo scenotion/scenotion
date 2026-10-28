@@ -7,7 +7,7 @@ Scenotion source is MIT. Direct dependencies:
 | `@motion-canvas/core` | 3.17.2 | MIT |
 | `@motion-canvas/2d` | 3.17.2 | MIT |
 | `@motion-canvas/ffmpeg` | 3.17.2 | MIT |
-| `@motion-canvas/ui` | 3.17.2 | MIT |
+| `@scenotion/ui` (Motion Canvas UI fork) | 0.1.0 | MIT |
 | `@motion-canvas/vite-plugin` | 3.17.2 | MIT |
 | `@codemirror/language` | 6.13.1 | MIT |
 | `@lezer/highlight` | 1.2.5 | MIT |
@@ -39,3 +39,12 @@ No font or media binaries are bundled. The theme references installed font famil
 ## Motion Canvas
 
 Motion Canvas is MIT-licensed. Scenotion is independent and not affiliated with it.
+
+## Motion Canvas UI fork
+
+`packages/scenotion-ui` is a targeted fork of `@motion-canvas/ui@3.17.2`.
+
+- Upstream license: MIT, Copyright (c) 2022 motion-canvas.
+- The upstream `LICENSE` is kept in the package.
+- Modifications: the editor timeline gains a Scenotion narration lane; the package name and build setup are changed.
+- `packages/scenotion-ui/NOTICE.md` records the fork base and maintenance rules.

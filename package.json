@@ -10,13 +10,14 @@
     "npm": ">=10"
   },
   "scripts": {
-    "start": "vite",
-    "serve": "vite",
-    "build": "tsc --noEmit && cross-env VITE_CJS_IGNORE_WARNING=true vite build",
-    "check": "tsc --noEmit",
+    "start": "npm run build:ui && vite",
+    "serve": "npm run build:ui && vite",
+    "build:ui": "npm --prefix packages/scenotion-ui run build",
+    "build": "npm run build:ui && tsc --noEmit && cross-env VITE_CJS_IGNORE_WARNING=true vite build",
+    "check": "npm run build:ui && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:types": "tsc -p tsconfig.tests.json && tsc -p tsconfig.editor.json",
+    "test:types": "npm run build:ui && tsc -p tsconfig.tests.json && tsc -p tsconfig.editor.json",
     "review": "node scripts/export-review.mjs"
   },
   "dependencies": {
@@ -31,12 +32,19 @@
     "diff": "^9.0.0"
   },
   "devDependencies": {
-    "@motion-canvas/ui": "3.17.2",
     "@motion-canvas/vite-plugin": "3.17.2",
+    "@preact/preset-vite": "^2.7.0",
+    "@preact/signals": "^1.3.4",
     "@scenotion/editor": "file:./editor",
+    "@scenotion/ui": "file:./packages/scenotion-ui",
     "@types/node": "^20.19.43",
+    "clsx": "^2.0.0",
     "cross-env": "^10.1.0",
+    "highlight.js": "^11.9.0",
     "preact": "^10.29.8",
+    "sass": "^1.69.5",
+    "source-map-js": "^1.0.2",
+    "vite-plugin-dts": "^3.6.4",
     "typescript": "^5.6.0",
     "vite": "^5.4.0",
     "vitest": "^2.1.9"

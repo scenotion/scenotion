@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { Pane, Science, Select, Tab, Tune } from "@motion-canvas/ui";
+import { Pane, Science, Select, Tab, Tune } from "@scenotion/ui";
 import {
   getEditorLocale,
   getVideoLocale,

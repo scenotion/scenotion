@@ -1,7 +1,8 @@
+import "@scenotion/ui/dist/style.css";
 import {
   editor as stockEditor,
   index as stockIndex,
-} from "@motion-canvas/ui";
+} from "@scenotion/ui";
 import { getEditorLocale, installUiTranslation } from "./i18n";
 import { createScenotionPlugin } from "./plugin";
 

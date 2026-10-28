@@ -45,13 +45,22 @@ project name with slugify; "Code Workflow" becomes code-workflow.
 
 ## Editor
 
-The Narration tab is line-based:
+The Narration sidebar is the recording control surface:
 
 - choose a line;
 - record into the local voiceover directory;
 - play takes and set the active take;
 - edit offset, trim in/out, gain, fade in/out;
 - inspect a decoded waveform.
+
+The forked timeline also renders a voice lane for the current video locale. The
+active take of each line appears as a clip positioned from line start + offset +
+trim. Clicking a clip seeks the player to its start. The lane refreshes when the
+sidebar notifies it or after a short poll.
+
+The REC button records the line at the playhead, or the first line without a take,
+and saves it directly to the lane. This is a scratch recording at the current
+playhead; synchronized playback, countdown and punch-in/out are still M2 work.
 
 The language selector changes the displayed script and the take locale.
 
